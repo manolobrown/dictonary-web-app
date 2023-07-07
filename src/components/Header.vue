@@ -28,10 +28,16 @@
     </div>
     <div class="flex items-center divide-x divide-[#979797] gap-4 sm:gap-6">
       <div class="relative">
-        <select name="" id="" class="appearance-none pr-6">
-          <option value="sansSerif">Sans Serif</option>
-          <option value="serif">Serif</option>
-          <option value="mono">Mono</option>
+        <label for="selectFont" class="sr-only">Select Font</label>
+        <select
+          name="selectFont"
+          id="selectFont"
+          class="appearance-none pr-6"
+          @change="$emit('update:modelValue', $event.target.value)"
+        >
+          <option v-for="option in options" :value="option.value">
+            {{ option.text }}
+          </option>
         </select>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -50,13 +56,15 @@
       </div>
 
       <div class="pl-2 sm:pl-4 flex items-center">
-        <label class="relative flex justify-between items-center p-2 text-xl">
+        <label
+          class="relative flex justify-between items-center p-2 text-xl cursor-pointer"
+        >
           <input
             type="checkbox"
-            class="absolute left-1/2 -translate-x-1/2 w-full h-full peer appearance-none rounded-md"
+            class="absolute left-1/2 -translate-x-1/2 w-full h-full peer appearance-none rounded-md cursor-pointer"
           />
           <span
-            class="w-[42px] h-[22px] flex items-center flex-shrink-0 p-1 bg-[#757575] rounded-full duration-300 ease-in-out peer-checked:bg-[#A445ED] after:w-[14px] after:h-[14px] after:bg-white after:rounded-full after:shadow-md after:duration-300 peer-checked:after:translate-x-[20px]"
+            class="w-[42px] h-[22px] flex items-center flex-shrink-0 p-1 bg-[#757575] rounded-full duration-300 ease-in-out peer-checked:bg-[#A445ED] after:w-[14px] after:h-[14px] after:bg-white after:rounded-full after:shadow-md after:duration-300 peer-checked:after:translate-x-[20px] cursor-pointer"
           ></span>
         </label>
         <svg
@@ -79,6 +87,13 @@
   </header>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+defineEmits(["update:modelValue"]);
 
-<style lang="scss" scoped></style>
+const options = ref([
+  { text: "Sans Serif", value: "font-sans" },
+  { text: "Serif", value: "font-serif" },
+  { text: "Mono", value: "font-mono" },
+]);
+</script>
