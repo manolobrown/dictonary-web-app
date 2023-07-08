@@ -33,7 +33,7 @@
           name="selectFont"
           id="selectFont"
           class="appearance-none pr-6"
-          @change="$emit('update:modelValue', $event.target.value)"
+          @change="$emit('update:fontFace', $event.target.value)"
         >
           <option v-for="option in options" :value="option.value">
             {{ option.text }}
@@ -62,6 +62,8 @@
           <input
             type="checkbox"
             class="absolute left-1/2 -translate-x-1/2 w-full h-full peer appearance-none rounded-md cursor-pointer"
+            :value="modelValue"
+            @change="$emit('update:modelValue', $event.target.checked)"
           />
           <span
             class="w-[42px] h-[22px] flex items-center flex-shrink-0 p-1 bg-[#757575] rounded-full duration-300 ease-in-out peer-checked:bg-[#A445ED] after:w-[14px] after:h-[14px] after:bg-white after:rounded-full after:shadow-md after:duration-300 peer-checked:after:translate-x-[20px] cursor-pointer"
@@ -89,7 +91,8 @@
 
 <script setup>
 import { ref } from "vue";
-defineEmits(["update:modelValue"]);
+defineProps(["modelValue", "fontFace"]);
+defineEmits(["update:fontFace", "update:modelValue"]);
 
 const options = ref([
   { text: "Sans Serif", value: "font-sans" },
