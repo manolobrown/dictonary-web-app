@@ -62,8 +62,8 @@
           <input
             type="checkbox"
             class="absolute left-1/2 -translate-x-1/2 w-full h-full peer appearance-none rounded-md cursor-pointer"
-            :value="modelValue"
-            @change="$emit('update:modelValue', $event.target.checked)"
+            v-model="checked"
+            @change="darkMode"
           />
           <span
             class="w-[42px] h-[22px] flex items-center flex-shrink-0 p-1 bg-[#757575] rounded-full duration-300 ease-in-out peer-checked:bg-[#A445ED] after:w-[14px] after:h-[14px] after:bg-white after:rounded-full after:shadow-md after:duration-300 peer-checked:after:translate-x-[20px] cursor-pointer"
@@ -91,12 +91,22 @@
 
 <script setup>
 import { ref } from "vue";
-defineProps(["modelValue", "fontFace"]);
-defineEmits(["update:fontFace", "update:modelValue"]);
+defineProps(["fontFace"]);
+defineEmits(["update:fontFace"]);
 
 const options = ref([
   { text: "Sans Serif", value: "font-sans" },
   { text: "Serif", value: "font-serif" },
   { text: "Mono", value: "font-mono" },
 ]);
+
+const checked = ref(false);
+
+function darkMode() {
+  if (checked.value) {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
+}
 </script>
