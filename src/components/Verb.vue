@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="relative flex py-5 items-center sm:py-8">
-      <h2 class="flex-shrink mr-4 text-black text-lg font-bold sm:text-2xl">
+      <h2 class="flex-shrink mr-4 text-lg font-bold sm:text-2xl">
         <em>verb</em>
       </h2>
       <div class="flex-grow border-t border-[#e9e9e9]"></div>
@@ -23,9 +23,9 @@
       class="text-[#757575] text-sm border-t border-[#e9e9e9] pt-6 pb-8 sm:flex sm:gap-5"
     >
       <span class="underline underline-offset-2">Source</span>
-      <div class="flex gap-1 items-center mt-2 sm:mt-0">
+      <div class="flex gap-1 sm:gap-4 items-center mt-2 sm:mt-0">
         <a
-          class="underline underline-offset-1 decoration-1 text-[#2d2d2d]"
+          class="underline underline-offset-1 decoration-1 text-[#2d2d2d] dark:text-white"
           href="https://en.wiktionary.org/wiki/keyboard"
           >https://en.wiktionary.org/wiki/keyboard</a
         >

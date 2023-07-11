@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="relative flex py-5 items-center sm:py-8">
-      <h2 class="flex-shrink mr-4 text-black text-lg font-bold sm:text-2xl">
+      <h2 class="flex-shrink mr-4 text-lg font-bold sm:text-2xl">
         <em>noun</em>
       </h2>
       <div class="flex-grow border-t border-[#e9e9e9]"></div>

@@ -1,12 +1,12 @@
 <template>
   <form
     action=""
-    class="flex items-center justify-between bg-[#f4f4f4] py-[14px] px-6 rounded-2xl sm:mb-10"
+    class="flex items-center justify-between bg-[#f4f4f4] dark:bg-[#1f1f1f] border border-transparent py-[14px] px-6 rounded-2xl sm:mb-10"
   >
     <input
-      class="bg-transparent w-full text-[#2d2d2d] placeholder:text-[#2d2d2d] font-semibold sm:text-xl"
+      class="bg-transparent w-full placeholder:text-[#2d2d2d] placeholder:opacity-25 font-semibold sm:text-xl dark:placeholder:text-white"
       type="text"
-      placeholder="Search Dictionary"
+      placeholder="Search for any word..."
     />
     <button type="submit">
       <svg
