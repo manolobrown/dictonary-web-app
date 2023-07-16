@@ -2,9 +2,10 @@
 import Audio from "./Audio.vue";
 import Noun from "./Noun.vue";
 import Verb from "./Verb.vue";
+const props = defineProps({ definition: Object });
 </script>
 <template>
-  <Audio />
-  <Noun />
+  <Audio :definition="definition[0]" />
+  <Noun :definition="definition" />
   <Verb />
 </template>

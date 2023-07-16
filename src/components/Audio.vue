@@ -2,9 +2,9 @@
   <div class="flex justify-between">
     <div>
       <h1 class="text-3xl font-bold mb-2 sm:text-[64px] sm:leading-[1.4]">
-        Keyboard
+        {{ definition.word }}
       </h1>
-      <div class="text-[#a445ed] sm:text-2xl">/ˈkiːbɔːd/</div>
+      <div class="text-[#a445ed] sm:text-2xl">{{ definition.phonetic }}</div>
     </div>
     <button class="max-w-[48px] sm:max-w-[75px]">
       <svg
@@ -28,6 +28,6 @@
   </div>
 </template>
 
-<script setup></script>
-
-<style lang="scss" scoped></style>
+<script setup>
+const props = defineProps({ definition: Object });
+</script>
