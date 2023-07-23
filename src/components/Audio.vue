@@ -6,7 +6,12 @@
       </h1>
       <div class="text-[#a445ed] sm:text-2xl">{{ definition.phonetic }}</div>
     </div>
-    <button class="max-w-[48px] sm:max-w-[75px]">
+    <button
+      v-if="phonetic.audio"
+      class="max-w-[48px] sm:max-w-[75px]"
+      :data-audio="phonetic.audio"
+      @click="playAudio()"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="75"
@@ -29,5 +34,15 @@
 </template>
 
 <script setup>
+import { ref, reactive, watch, watchEffect, computed } from "vue";
 const props = defineProps({ definition: Object });
+const phonetic = ref("");
+watchEffect(() => {
+  phonetic.value = props.definition.phonetics.find((el) => el.audio !== "");
+});
+
+function playAudio() {
+  const audio = new Audio(phonetic.value.audio);
+  audio.play();
+}
 </script>

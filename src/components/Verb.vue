@@ -12,10 +12,10 @@
       role="list"
       class="marker:text-[#8f19e8] list-disc pl-3 space-y-3 mb-6 sm:text-lg sm:pl-8"
     >
-      <li class="pl-3">
-        To type on a computer keyboard.
+      <li class="pl-3" v-for="item in definition.meanings[1].definitions">
+        {{ item.definition }}
         <div class="text-[#757575] mt-3">
-          “Keyboarding is the part of this job I hate the most.”
+          {{ item.example }}
         </div>
       </li>
     </ul>
@@ -25,9 +25,11 @@
       <span class="underline underline-offset-2">Source</span>
       <div class="flex gap-1 sm:gap-4 items-center mt-2 sm:mt-0">
         <a
+          v-for="item in definition.sourceUrls"
           class="underline underline-offset-1 decoration-1 text-[#2d2d2d] dark:text-white"
-          href="https://en.wiktionary.org/wiki/keyboard"
-          >https://en.wiktionary.org/wiki/keyboard</a
+          :href="item"
+          target="_blank"
+          >{{ item }}</a
         >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -49,6 +51,6 @@
   </div>
 </template>
 
-<script setup></script>
-
-<style lang="scss" scoped></style>
+<script setup>
+const props = defineProps({ definition: Object });
+</script>

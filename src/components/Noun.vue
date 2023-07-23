@@ -12,14 +12,14 @@
       role="list"
       class="marker:text-[#8f19e8] list-disc pl-3 space-y-3 mb-6 sm:text-lg sm:pl-8 sm:mb-8"
     >
-      <li class="pl-3" v-for="item in meanings">
+      <li class="pl-3" v-for="item in definition.meanings[0].definitions">
         {{ item.definition }}
       </li>
     </ul>
     <div class="flex gap-6 text-[#757575] sm:text-xl">
       Synonyms
       <div class="font-bold text-[#a445ed]">
-        <span v-for="item in synonyms.join(', ')">
+        <span v-for="item in props.definition.meanings[0].synonyms.join(', ')">
           {{ item }}
         </span>
       </div>
@@ -29,6 +29,4 @@
 
 <script setup>
 const props = defineProps({ definition: Object });
-const meanings = props.definition[0].meanings[0].definitions;
-const synonyms = props.definition[0].meanings[0].synonyms;
 </script>
