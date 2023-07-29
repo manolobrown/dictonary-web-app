@@ -91,7 +91,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 defineProps(["fontFace"]);
 defineEmits(["update:fontFace"]);
 
@@ -110,4 +110,28 @@ function darkMode() {
     document.documentElement.classList.remove("dark");
   }
 }
+
+onMounted(() => {
+  // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+  if (
+    localStorage.theme === "dark" ||
+    (!("theme" in localStorage) &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
+    document.documentElement.classList.add("dark");
+    checked.value = true;
+  } else {
+    document.documentElement.classList.remove("dark");
+    checked.value = false;
+  }
+
+  // Whenever the user explicitly chooses light mode
+  localStorage.theme = "light";
+
+  // Whenever the user explicitly chooses dark mode
+  localStorage.theme = "dark";
+
+  // Whenever the user explicitly chooses to respect the OS preference
+  localStorage.removeItem("theme");
+});
 </script>

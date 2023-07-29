@@ -9,7 +9,6 @@
     <button
       v-if="phonetic.audio"
       class="max-w-[48px] sm:max-w-[75px]"
-      :data-audio="phonetic.audio"
       @click="playAudio()"
     >
       <svg
